@@ -962,7 +962,7 @@ public class Ejecucion extends javax.swing.JFrame {
     
     
     //1 Entrada
-    public static int ADD (int A){
+    public static int INC (int A){
         return A+1;
     }
     public static int DEC (int A){
