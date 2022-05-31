@@ -16,7 +16,7 @@ public class Comandos {
         this.B = B;
     }
     
-    public int LD (int A, int B){
+    public int LD (String A, String B){
         int resultado=0;
         
         //Proceso
