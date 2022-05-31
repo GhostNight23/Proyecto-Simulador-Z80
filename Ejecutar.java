@@ -1,8 +1,10 @@
 package z.pkg80;
 
 import Archivos.Comandos;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,34 +12,35 @@ import java.util.List;
  */
 public class Ejecucion extends javax.swing.JFrame {
 
-    public Ejecucion (List<Comandos> comandos, String direccion_carga){
-        this.comandos = comandos;
-        this.direccion_carga = direccion_carga;
-    }
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   
-    int A_registro;
-    int B_registro;
-    int C_registro;
-    int D_registro;
-    int F_registro;
-    int H_registro;
-    int L_registro;
-    int A_1_registro;
-    int B_1_registro;
-    int C_1_registro;
-    int D_1_registro;
-    int F_1_registro;
-    int H_1_registro;
-    int L_1_registro;
-    int PC_registro;
     
-    List<Comandos> comandos = new LinkedList<>();
-    String direccion_carga;
     
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public List<Comandos> comandos = new LinkedList<>();
+    public String direccion_carga;
+    public int[][] memoria = new int[1000][16];
+    
     public Ejecucion() {
         initComponents();
-        initTextArea();
+        this.A_value.setText("0000");
+        this.B_value.setText("0000");
+        this.C_value.setText("0000");
+        this.D_value.setText("0000");
+        this.E_value.setText("0000");
+        this.F_value.setText("0000");
+        this.H_value.setText("0000");
+        this.L_value.setText("0000");
+        this.A_value1.setText("0000");
+        this.B_value1.setText("0000");
+        this.C_value1.setText("0000");
+        this.D_value1.setText("0000");
+        this.F_value1.setText("0000");
+        this.H_value1.setText("0000");
+        this.L_value1.setText("0000");
+        this.PC_value.setText("0000");
+        this.SP_value.setText("0000");
+        this.IX_value.setText("0000");
+        this.IY_value.setText("0000");
+        this.I_value.setText("0000");
+        this.R_value.setText("0000");
     }
 
     /**
@@ -105,11 +108,11 @@ public class Ejecucion extends javax.swing.JFrame {
         NF_value = new javax.swing.JLabel();
         CF_value = new javax.swing.JLabel();
         IX_value = new javax.swing.JLabel();
-        PC_value1 = new javax.swing.JLabel();
-        IY_value1 = new javax.swing.JLabel();
+        PC_value = new javax.swing.JLabel();
+        IY_value = new javax.swing.JLabel();
         I_value = new javax.swing.JLabel();
-        SP_value1 = new javax.swing.JLabel();
-        R_value1 = new javax.swing.JLabel();
+        SP_value = new javax.swing.JLabel();
+        R_value = new javax.swing.JLabel();
         Panel_Comandos = new javax.swing.JPanel();
         Titulo_Comandos = new javax.swing.JLabel();
         Volver = new javax.swing.JButton();
@@ -303,20 +306,20 @@ public class Ejecucion extends javax.swing.JFrame {
         IX_value.setFont(new java.awt.Font("Sylfaen", 1, 15)); // NOI18N
         IX_value.setText("IX_value");
 
-        PC_value1.setFont(new java.awt.Font("Sylfaen", 1, 15)); // NOI18N
-        PC_value1.setText("PC_value");
+        PC_value.setFont(new java.awt.Font("Sylfaen", 1, 15)); // NOI18N
+        PC_value.setText("PC_value");
 
-        IY_value1.setFont(new java.awt.Font("Sylfaen", 1, 15)); // NOI18N
-        IY_value1.setText("IY_value");
+        IY_value.setFont(new java.awt.Font("Sylfaen", 1, 15)); // NOI18N
+        IY_value.setText("IY_value");
 
         I_value.setFont(new java.awt.Font("Sylfaen", 1, 15)); // NOI18N
         I_value.setText("I_value");
 
-        SP_value1.setFont(new java.awt.Font("Sylfaen", 1, 15)); // NOI18N
-        SP_value1.setText("SP_value");
+        SP_value.setFont(new java.awt.Font("Sylfaen", 1, 15)); // NOI18N
+        SP_value.setText("SP_value");
 
-        R_value1.setFont(new java.awt.Font("Sylfaen", 1, 15)); // NOI18N
-        R_value1.setText("R_value");
+        R_value.setFont(new java.awt.Font("Sylfaen", 1, 15)); // NOI18N
+        R_value.setText("R_value");
 
         javax.swing.GroupLayout Panel_RegistrosLayout = new javax.swing.GroupLayout(Panel_Registros);
         Panel_Registros.setLayout(Panel_RegistrosLayout);
@@ -404,7 +407,7 @@ public class Ejecucion extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(PC)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(PC_value1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(PC_value, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(Panel_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Panel_RegistrosLayout.createSequentialGroup()
                                 .addGap(90, 90, 90)
@@ -454,8 +457,8 @@ public class Ejecucion extends javax.swing.JFrame {
                                             .addComponent(SP))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(Panel_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(IY_value1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(SP_value1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(IY_value, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(SP_value, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(Panel_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(R)
@@ -466,7 +469,7 @@ public class Ejecucion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Panel_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(I_value, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(R_value1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(R_value, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         Panel_RegistrosLayout.setVerticalGroup(
@@ -544,17 +547,17 @@ public class Ejecucion extends javax.swing.JFrame {
                             .addComponent(N_F)
                             .addComponent(C_F)
                             .addComponent(IY)
-                            .addComponent(IY_value1)
+                            .addComponent(IY_value)
                             .addComponent(I)
                             .addComponent(I_value))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(Panel_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(PC)
                             .addComponent(SP)
-                            .addComponent(SP_value1)
-                            .addComponent(PC_value1)
+                            .addComponent(SP_value)
+                            .addComponent(PC_value)
                             .addComponent(R)
-                            .addComponent(R_value1)))
+                            .addComponent(R_value)))
                     .addGroup(Panel_RegistrosLayout.createSequentialGroup()
                         .addGroup(Panel_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(IX)
@@ -680,6 +683,7 @@ public class Ejecucion extends javax.swing.JFrame {
         Titulo_Entradas.setText("Desensamble");
 
         TextArea.setColumns(20);
+        TextArea.setFont(new java.awt.Font("Sylfaen", 1, 20)); // NOI18N
         TextArea.setRows(5);
         jScrollPane1.setViewportView(TextArea);
 
@@ -799,27 +803,113 @@ public class Ejecucion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
     private void Button_Volver(java.awt.event.MouseEvent evt) {                               
         this.setVisible(false);
     }                              
 
     private void Button_Libre(java.awt.event.MouseEvent evt) {                              
-        // TODO add your handling code here:
+        //Registros
+        HashMap <String,Integer> registros = new HashMap<String,Integer>();
+        registros.put("A", 0);
+        registros.put("B", 0);
+        registros.put("C", 0);
+        registros.put("D", 0);
+        registros.put("E", 0);
+        registros.put("F", 0);
+        registros.put("H", 0);
+        registros.put("L", 0);
+        registros.put("A_1", 0);
+        registros.put("B_1", 0);
+        registros.put("C_1", 0);
+        registros.put("D_1", 0);
+        registros.put("F_1", 0);
+        registros.put("H_1", 0);
+        registros.put("L_1", 0);
+        registros.put("PC_1", 0);
+        registros.put("SF_value", 0);
+        registros.put("ZF_value", 0);
+        registros.put("HF_value", 0);
+        registros.put("PF_value", 0);
+        registros.put("NF_value", 0);
+        registros.put("CF_value", 0);
+        
+        String mensaje = "";
+        System.out.println(comandos.size());
+        Integer resultado;
+        
+        //CICLO
+        for(int i=0; i<comandos.size();i++){
+            System.out.println(comandos.get(i).instruccion);
+            
+            //FUNCIONES 2 ENTRADAS
+            
+            if(comandos.get(i).B != null){
+                mensaje = mensaje + comandos.get(i).instruccion+"   ->   "+comandos.get(i).A+"  ,  "+comandos.get(i).B+"\n";
+                
+                switch(comandos.get(i).instruccion){
+                    case "LD":
+                        resultado = this.LD(registros.get(comandos.get(i).A), registros.get(comandos.get(i).B));
+                        //Resultado es donde se guarda el valor a modificar
+                        // resultado = this.<FUNCION>(<ENTRADA "A">,<ENTRADA "B">);
+                        //ENTRADA 1 >>>>>>>    registros.get(comandos.get(i).A)
+                        //ENTRADA 2 >>>>>>     registros.get(comandos.get(i).B)
+                        
+                        //MODIFICAR LOS REGISTROS
+                        //MODIFICAR HASHMAP
+                        registros.replace(comandos.get(i).A, resultado);
+                        //registros.replace(<REGISTRO EN DONDE SE GUARDA> , <RESULTADO>);
+                        //comandos es una lista de 1 hasta i comandos registrados
+                        
+                        //MODIFICAN LAS BANDERAS
+                        //Z
+                        if(resultado < 0){
+                            registros.replace("ZF_value", 1);
+                        }else{
+                            registros.replace("ZF_value", 0);
+                        }
+                        
+                        
+                        
+                        //MODIFICAR INTERFAZ
+                        this.A_value.setText(String.valueOf(resultado));
+                        break;
+                        
+ 
+                    default:
+                        break;
+                }
+            }
+            //FUNCIONES 1 ENTRADAS
+            else{
+                mensaje = mensaje + comandos.get(i).instruccion+"   ->   "+comandos.get(i).A+"\n";
+                
+                switch(comandos.get(i).instruccion){
+                    case "ADD":
+                        resultado = this.ADD(registros.get(comandos.get(i).A));
+                        //ENTRADA >>>>>>>> registros.get(comandos.get(i).A)
+                        registros.replace(comandos.get(i).A, resultado);
+                        this.A_value.setText(String.valueOf(resultado));
+                        break;
+                    case "DEC":
+                        resultado = this.DEC(registros.get(comandos.get(i).A));
+                        //ENTRADA >>>>>>>> registros.get(comandos.get(i).A)
+                        registros.replace(comandos.get(i).A, resultado);
+                        this.A_value.setText(String.valueOf(resultado));
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        
+        System.out.println(mensaje);
+        TextArea.setText(mensaje);
     }                             
 
     private void Button_Paso(java.awt.event.MouseEvent evt) {                             
         // TODO add your handling code here:
     }                            
 
-    public void initTextArea(){
-        String mensaje = "";
-        for(int i=0; i<comandos.size();i++){
-            mensaje = comandos[i];
-        }
-        TextArea.setText(mensaje);
-    }
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     /**
      * @param args the command line arguments
      */
@@ -855,6 +945,30 @@ public class Ejecucion extends javax.swing.JFrame {
         });
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Instrucciones 
+    //" Entradas
+    public static int LD (int A, int B){
+        int resultado = A + B;
+        return resultado;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //1 Entrada
+    public static int ADD (int A){
+        return A+1;
+    }
+    public static int DEC (int A){
+        return A-1;
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Variables declaration - do not modify                     
     private javax.swing.JLabel A;
     private javax.swing.JLabel A1;
@@ -893,7 +1007,7 @@ public class Ejecucion extends javax.swing.JFrame {
     private javax.swing.JLabel IX;
     private javax.swing.JLabel IX_value;
     private javax.swing.JLabel IY;
-    private javax.swing.JLabel IY_value1;
+    private javax.swing.JLabel IY_value;
     private javax.swing.JLabel I_value;
     private javax.swing.JLabel L;
     private javax.swing.JLabel L1;
@@ -903,7 +1017,7 @@ public class Ejecucion extends javax.swing.JFrame {
     private javax.swing.JLabel NF_value;
     private javax.swing.JLabel N_F;
     private javax.swing.JLabel PC;
-    private javax.swing.JLabel PC_value1;
+    private javax.swing.JLabel PC_value;
     private javax.swing.JLabel PF_value;
     private javax.swing.JLabel P_F;
     private javax.swing.JPanel Panel_Comandos;
@@ -914,10 +1028,10 @@ public class Ejecucion extends javax.swing.JFrame {
     private javax.swing.JButton Paso;
     private javax.swing.JLabel Quinto_0;
     private javax.swing.JLabel R;
-    private javax.swing.JLabel R_value1;
+    private javax.swing.JLabel R_value;
     private javax.swing.JLabel SF_value;
     private javax.swing.JLabel SP;
-    private javax.swing.JLabel SP_value1;
+    private javax.swing.JLabel SP_value;
     private javax.swing.JLabel S_F;
     private javax.swing.JLabel Set_Registro;
     private javax.swing.JLabel Set_Registro_value;
