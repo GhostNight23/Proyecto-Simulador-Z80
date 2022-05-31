@@ -7,17 +7,9 @@ package Archivos;
 public class Comandos {
     
     public String instruccion;
-    public int codigo_instruccion;
     public String A;
     public String B;
-    
-    public Comandos(String instruccion, int codigo_instruccion , String A, String B){
-        this.instruccion = instruccion;
-        this.codigo_instruccion = codigo_instruccion;
-        this.A = A;
-        this.B = B;
-    }
-    
+   
     public Comandos(String instruccion,String A, String B){
         this.instruccion = instruccion;
         this.A = A;
