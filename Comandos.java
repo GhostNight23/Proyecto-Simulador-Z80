@@ -18,8 +18,8 @@ public class Comandos {
     
     public int LD (String A, String B){
         int resultado=0;
-        
-        //Proceso
+        if (A.length == 1 && B.length == 1){
+            
         
         return resultado;
     }
