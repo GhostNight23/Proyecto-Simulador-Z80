@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package z.pkg80;
 
 import Archivos.Comandos;
@@ -5,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import sun.tools.jconsole.Messages;
 
 /**
  *
@@ -32,6 +38,7 @@ public class Ejecucion extends javax.swing.JFrame {
         this.B_value1.setText("0000");
         this.C_value1.setText("0000");
         this.D_value1.setText("0000");
+        this.E_value1.setText("0000");
         this.F_value1.setText("0000");
         this.H_value1.setText("0000");
         this.L_value1.setText("0000");
@@ -52,6 +59,8 @@ public class Ejecucion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         Panel_Registros = new javax.swing.JPanel();
         A = new javax.swing.JLabel();
         Titulo_Registros = new javax.swing.JLabel();
@@ -133,6 +142,12 @@ public class Ejecucion extends javax.swing.JFrame {
         Titulo_Entradas1 = new javax.swing.JLabel();
         Panel_Pila = new javax.swing.JPanel();
         Titulo_Pila = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        NumerosPila = new javax.swing.JTextPane();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -331,18 +346,21 @@ public class Ejecucion extends javax.swing.JFrame {
                         .addGroup(Panel_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Panel_RegistrosLayout.createSequentialGroup()
                                 .addGap(79, 79, 79)
-                                .addComponent(S_F)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Z_F))
-                            .addGroup(Panel_RegistrosLayout.createSequentialGroup()
+                                .addComponent(S_F))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_RegistrosLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(FLAGS)
                                 .addGap(18, 18, 18)
-                                .addComponent(SF_value)
+                                .addComponent(SF_value, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(Panel_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Panel_RegistrosLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ZF_value)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Tercer_0)))
+                                .addComponent(Z_F))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_RegistrosLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(ZF_value, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(2, 2, 2)
+                        .addComponent(Tercer_0, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Panel_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(Panel_RegistrosLayout.createSequentialGroup()
@@ -706,7 +724,7 @@ public class Ejecucion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(Titulo_Entradas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -725,7 +743,7 @@ public class Ejecucion extends javax.swing.JFrame {
             .addGroup(Panel_PuertosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Titulo_Salidas)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(Panel_PuertosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_PuertosLayout.createSequentialGroup()
                     .addContainerGap(22, Short.MAX_VALUE)
@@ -750,6 +768,9 @@ public class Ejecucion extends javax.swing.JFrame {
         Titulo_Pila.setFont(new java.awt.Font("Sylfaen", 1, 15)); // NOI18N
         Titulo_Pila.setText("Pila");
 
+        NumerosPila.setBackground(new java.awt.Color(102, 255, 102));
+        jScrollPane3.setViewportView(NumerosPila);
+
         javax.swing.GroupLayout Panel_PilaLayout = new javax.swing.GroupLayout(Panel_Pila);
         Panel_Pila.setLayout(Panel_PilaLayout);
         Panel_PilaLayout.setHorizontalGroup(
@@ -758,13 +779,16 @@ public class Ejecucion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(Titulo_Pila)
                 .addContainerGap(26, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         Panel_PilaLayout.setVerticalGroup(
             Panel_PilaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_PilaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Titulo_Pila)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -896,6 +920,14 @@ public class Ejecucion extends javax.swing.JFrame {
                         registros.replace(comandos.get(i).A, resultado);
                         this.A_value.setText(String.valueOf(resultado));
                         break;
+                    case "CP":
+                        resultado = this.CP(registros.get(comandos.get(i).A), registros.get("A"));
+                        if(resultado <= 0){
+                            registros.replace("ZF_value", 1);
+                        }
+                        break;
+                    case "PUSH":
+                        this.PUSH(comandos.get(i).A);
                     default:
                         break;
                 }
@@ -955,18 +987,45 @@ public class Ejecucion extends javax.swing.JFrame {
     
     
     
-    
+
     
     
     
     
     
     //1 Entrada
-    public static int INC (int A){
+    public static int ADD (int A){
         return A+1;
     }
     public static int DEC (int A){
         return A-1;
+    }
+    
+    public static int CP(int A,int B){
+        return B-A;
+    }
+    
+        public void PUSH(String A){
+        switch(A){
+            case "IX":
+                NumerosPila.setText(IX_value.getText());
+                break;
+            case "IY":
+                NumerosPila.setText(IY_value.getText());
+                break;
+            case "BC":
+                NumerosPila.setText(B_value.getText().concat(C_value.getText()));
+                break;
+            case "DE":
+                NumerosPila.setText(D_value.getText().concat(E_value.getText()));
+                break;
+            case "HL":
+                NumerosPila.setText(H_value.getText().concat(L_value.getText()));
+                break;
+            case "AF":
+                NumerosPila.setText(A_value.getText().concat(F_value.getText()));
+                break;
+        }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Variables declaration - do not modify                     
@@ -1016,6 +1075,7 @@ public class Ejecucion extends javax.swing.JFrame {
     private javax.swing.JButton Libre;
     private javax.swing.JLabel NF_value;
     private javax.swing.JLabel N_F;
+    private javax.swing.JTextPane NumerosPila;
     private javax.swing.JLabel PC;
     private javax.swing.JLabel PC_value;
     private javax.swing.JLabel PF_value;
@@ -1051,5 +1111,8 @@ public class Ejecucion extends javax.swing.JFrame {
     private javax.swing.JLabel ZF_value;
     private javax.swing.JLabel Z_F;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration                   
 }
